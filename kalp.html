@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+    <head>
+        <meta  charset="UTF-8">
+        <meta name="viewport" content="width=device-width,  initial-scale=1.0">
+        <title>Kalp Yağmuru Efekti</title>
+        <style>
+body {
+
+margin: 0;
+padding: 0;
+background:#fff0f6;
+overflow: hidden;
+font-family: sans-serif;
+}
+.hearts-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 999;
+    }
+
+    .heart {
+      position: absolute;
+      color: hotpink;
+      font-size: 24px;
+      animation: floatUp 4s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #d63384;
+      font-size: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts-container"></div>
+  <h1>Kalpler Uçuyor!</h1>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = '💖';
+
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+
+      document.querySelector('.hearts-container').appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
+
+ 
